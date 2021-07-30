@@ -1,100 +1,78 @@
-// // // //membuat array
-// // // // [] & newArray ()
+// NO 1
 
-// // // const students = []
-// // // const students = new Array()
+let input = [1,2,3];
+let count = 0
 
-// // // console.log(Array.isArray(students))
+for (let i=0; i <= input.length; i++){
+    count += i
+}
+console.log(count);
 
-// // const students1 = ["saeful", "ardy", "iqbal",[],{}]
-// // // const students2 = ["saeful", "ardy", "iqbal",[],{}]
+// NO 2
+function reverseAll(angka){
+    function reverseElement(nomor){
+        let str = nomor.toString();
+        let temp = "";
+        for (let i = str.length - 1; i>= 0;i--){
+            temp += str[i]
+        }
+        return Number(temp)
+    }
 
-// // // console.log(students1 === students2)
-// // // console.log(students1[4] === students2[4])
+    let reverseIndex = []
+    for (let i = angka.length -1; i >= 0; i--){
+        if (typeof angka[i] !== "number") return "Isi array harus number semua"
+        reverseIndex.push(reverseElement(angka[i]))
+    }
+    return reverseIndex;
+}
+console.log(reverseAll([123,456,789]));
 
-// // students1.push("gilang")
-// // console.log(students1)
+//NO 3
 
-// // const remove = students1.pop()
-// // console.log("data yang di hapus:", remove)
-// // students1.pop()
-// // console.log(students1)
-// // students1.pop()
-// // console.log(students1)
+function uniqueArr(array){
+    let hasil = []
 
-// const fruit = ["banana", "apple", "orange"];
+    for(let i = 0; i < array.length; i++){
+        if (typeof array[i] !== "number") return "Isi array harus number semua"
 
-// fruit.push("grape");
-// fruit.push("manggo")
-// for(let i=0; i<fruit.length; i++){
-//     console.log(fruit[i]);
-// }
-// for(let i=0; i>fruit.length; i--){
-//     console.log(fruit[i]);
-// }
-// function hurufGenap(kata) {
-//     if(typeof kata !="string"){
-//         console.log("input bukan string")
-//     }else{
-//         for (i=1; i<kata.length; i+=2){
-//             console.log(kata[i]);
-//         }
-//     }
-// }
-// hurufGenap("pratama")
-
-// function WordCount(str) { 
-//     return str.split(" ").length;
-// }
-
-// console.log(WordCount("hello"));
-
-//1
-// let penjumlahan = [1,2,3];
-// let total = 0;
-
-// for(i=0; i<penjumlahan.length; i++){
-//     total += penjumlahan[i];
-// }
-// console.log(total);
-
-
-// //2
-// let reversed =[4,5,6].reverse();
-// console.log(reversed);
-
-// //2
-// let balikan=[1,2,3];
-
-// for (i=0; i<balikan.length; i++){
-//     for (i<balikan.length-1; i>0; i++)
-// }
-// console.log(balikan);
-
-// Basic Logic no 1
-// function hurufGenap(kata) {
-//     if(typeof kata !="string"){
-//         console.log("Error input bukan string")
-//     }else{
-//         for (i=1; i<kata.length; i+=2){
-//             console.log(kata[i]);
-//         }
-//     }
-// }
-// hurufGenap("Pratama")
-
-//basic logic no 2
-function countWord(str) { 
-    if(typeof kata !="string"){
-        console.log("Error input bukan string")
-    }else{
-        for (i = 1; i <= str.length; i++){
-            if (str.length(i) == " ")
-            {
-                count ++;
+        let same = false
+        for (let k = 0; k < hasil.length; k++){
+            if(hasil[k] === array[i]){
+                same = true;
+                break
             }
         }
-        return count + 1;
+        if (same === false){
+            hasil.push(array[i])
         }
     }
-        console.log(countWords("I am a short sentence"));
+    return hasil
+}
+console.log(uniqueArr([1,2,3,4,5,6,7,1,3,4,"j",5,5]));
+console.log(uniqueArr([1,2,3,4,5,6,7,1,3,4,5,5]));
+
+//NO 4
+function jajanBoba(uang) {
+    const listBoba = [
+        ['Xing Fu Tang', 38000], 
+        ['OneZo', 53500],
+        ['KOI The', 36000],
+        ['Chatime', 25000],
+        ['Kokumi', 42000],
+        ['Bubble Station Milk', 13000]
+    ]
+    console.log("David memulai jajan dengan uang " + uang + " rupiah");
+    for (let i=0; i < listBoba.length; i++){
+        if(uang - listBoba[i][1] >= 0){
+            console.log("Dengan uang " + uang + ", cukup untuk membeli " + listBoba[i][0]+ " dengan harga "+ listBoba[i][1]);
+            uang -= listBoba[i][1]
+            console.log("jadi sisa uang david sekarang "+ uang)
+        } else {
+            console.log("dengan uang " + uang + " tidak bisa membeli " + listBoba[i])
+        }
+    }
+    console.log("David pulang kerumah dengan uang " + uang)
+}
+jajanBoba(500000)
+
